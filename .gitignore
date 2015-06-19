@@ -1,40 +1,5 @@
-# Created by https://www.gitignore.io
-
-#!! ERROR: xoxo is undefined. Use list command to see defined gitignore types !!#
-
-### C++ ###
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-# *.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-
-### Xcode ###
-build/
+# Xcode
+build/*
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -43,10 +8,30 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
 xcuserdata
-*.xccheckout
+profile
 *.moved-aside
-DerivedData
-*.xcuserstate
+
+#CocoaPod
+Pods/*
+
+#IDEA
+.idea/*
+
+#cocos2d-x
+libs/
+bin/
+obj/
+assets/
+gen/
+out/
+.classpath
+.project
+.cproject
+
+#JAVA
+*.class
 
 .DS_Store

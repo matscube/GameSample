@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.h"
+#include "FieldLayer.h"
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -16,9 +17,13 @@ Scene* GameScene::createScene()
     
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
+   
+    
+    auto fieldLayer = FieldLayer::create();
     
     // add layer as a child to scene
     scene->addChild(layer);
+    scene->addChild(fieldLayer);
     
     // return the scene
     return scene;
@@ -80,8 +85,10 @@ bool GameScene::init()
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
     
+    
     return true;
 }
+
 
 
 void GameScene::menuCloseCallback(Ref* pSender)
@@ -96,4 +103,36 @@ void GameScene::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+
+void GameScene::drawTest()
+{
+    // 画面サイズの取得
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    
+    // 描画用ノードの作成
+    CCDrawNode* draw = CCDrawNode::create();
+    draw->setPosition(ccp(0, 0));
+    draw->setTag(1);
+    this->addChild(draw);
+    
+    /* 円の描画 */
+    draw->drawDot(ccp(size.width * 0.5, size.height * 0.5), // 中心
+                  50,                        // 半径
+                  ccc4FFromccc3B(ccBLUE)                    // 色
+                  );
+
+/*    draw->drawPolygon(points,                  // 頂点の座標のデータ
+                      3,                       // 角数
+                      ccc4FFromccc3B(ccGREEN), // 図形の色
+                      1,                       // 枠線の太さ
+                      ccc4FFromccc3B(ccBLACK)  // 枠線の色
+                      );*/
+}
+
+void GameScene::deleteTest()
+{
+    // 描画用ノードを削除すると、描画された図形も消える
+    this->removeChildByTag(1);
 }
